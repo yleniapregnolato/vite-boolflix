@@ -8,7 +8,16 @@ export default {
     };
   },
   created() {
-   
+   axios
+   .get("https://api.themoviedb.org/3/search/movie", {
+    params: {
+      api_key: this.store.apiKey,
+      query:"ciao",
+    },
+   })
+   .then((resp) => {
+    console.log(resp);
+   })
   }
 }
 </script>
