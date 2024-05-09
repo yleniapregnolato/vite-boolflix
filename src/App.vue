@@ -11,10 +11,10 @@ export default {
     };
   },
   created() {
-    this.getMovieResult();
+    this.getResult();
   },
   methods: {
-    getMovieResult() {
+    getResult() {
       axios
       .get("https://api.themoviedb.org/3/search/movie", {
         params: {
@@ -26,9 +26,7 @@ export default {
         console.log(resp);
         this.store.moviesArray = resp.data.results;   
       });
-    },
-    
-    getTvResult() {
+
       axios
       .get("https://api.themoviedb.org/3/search/tv", {
         params: {
@@ -40,14 +38,15 @@ export default {
         console.log(resp);
         this.store.tvArray = resp.data.results
       })
-    },   
+    },
+
   }
 
 };
 </script>
 
 <template>
-  <AppSearch @change="getMovieResult" />
+  <AppSearch @change="getResult" />
   <AppMain />
 </template>
 
