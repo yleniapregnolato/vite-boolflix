@@ -2,8 +2,9 @@
 import axios from "axios";
 import { store } from "./store";
 import AppSearch from "./components/AppSearch.vue";
+import AppMain from "./components/AppMain.vue";
 export default {
-  components: { AppSearch },
+  components: { AppSearch, AppMain },
     data() {
     return {
       store,
@@ -22,8 +23,8 @@ export default {
         },
       })
       .then((resp) => {
-        this.store.moviesArray = resp.data.results;
         console.log(resp);
+        this.store.moviesArray = resp.data.results;   
       });
     }
   }
@@ -32,7 +33,8 @@ export default {
 </script>
 
 <template>
-  <AppSearch @filter="getResult" />
+  <AppSearch @change="getResult" />
+  <AppMain />
 </template>
 
 <style lang="scss"></style>
