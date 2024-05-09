@@ -11,10 +11,10 @@ export default {
     };
   },
   created() {
-    this.getResult();
+    this.getMovieResult();
   },
   methods: {
-    getResult() {
+    getMovieResult() {
       axios
       .get("https://api.themoviedb.org/3/search/movie", {
         params: {
@@ -26,14 +26,28 @@ export default {
         console.log(resp);
         this.store.moviesArray = resp.data.results;   
       });
-    }
+    },
+    
+    getTvResult() {
+      axios
+      .get("https://api.themoviedb.org/3/search/tv", {
+        params: {
+          api_key: this.store.apiKey,
+          query: this.store.searchQuery,
+        },
+      })
+      .then((resp) => {
+        console.log(resp);
+        this.store.tvArray = resp.data.results
+      })
+    },   
   }
 
 };
 </script>
 
 <template>
-  <AppSearch @change="getResult" />
+  <AppSearch @change="getMovieResult" />
   <AppMain />
 </template>
 
