@@ -28,7 +28,7 @@ export default {
             <h2 class="text-center"> {{ movieObj.title }} </h2>
             <h3 class="text-center"> {{ movieObj.original_title }}</h3>
             <div class="text-center d-flex justify-content-center">
-                <img :src="getImageUrl(movieObj.original_language)" alt="" >  
+                <img class="language" :src="getImageUrl(movieObj.original_language)" alt="" >  
                 <h4 class="text-center ms-3">{{ movieObj.original_language }}</h4>                        
             </div>
             <h4 class="text-center">{{ movieObj.vote_average }}</h4>
@@ -38,7 +38,7 @@ export default {
 
 <style scoped lang="scss">
 .ms_movie {
-    img {
+    .language {
         height: 20px;
     }
 }

@@ -27,7 +27,7 @@ export default {
             <h2 class="text-center"> {{ tvObj.name }} </h2>
             <h3 class="text-center"> {{ tvObj.original_name }}</h3>
             <div class="text-center d-flex justify-content-center">
-                <img :src="getImageUrl(tvObj.original_language)" alt="" >  
+                <img class="language" :src="getImageUrl(tvObj.original_language)" alt="" >  
                 <h4 class="text-center ms-3">{{ tvObj.original_language }}</h4>                        
             </div>
             <h4 class="text-center">{{ tvObj.vote_average }}</h4>
@@ -37,7 +37,7 @@ export default {
 
 <style scoped lang="scss">
 .ms_tv {
-    img {
+    .language {
         height: 20px;
     }
 }
