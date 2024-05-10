@@ -39,8 +39,10 @@ export default {
                 <img class="language" :src="getImageUrl(movieObj.original_language)" alt="">
                 <h4 class="text-center ms-3">{{ movieObj.original_language }}</h4>
             </div>
-            <h4 class="text-center">{{ getVote(movieObj.vote_average) }}</h4>
-            <div class="text-center"><i class="fa-regular fa-star" v-for="n in 5"></i></div>
+            <div class="text-center">
+                <i class="fa-solid fa-star" v-for="n in getVote()"></i>
+                <i class="fa-regular fa-star" v-for="n in 5 - getVote()"></i>
+            </div>
         </div>
     </div>
 </template>
@@ -52,7 +54,10 @@ export default {
     }
 
     .ms_not-found {
+        max-width: 100%;
         height: 183px;
+        object-fit: cover;
     }
+    
 }
 </style>
