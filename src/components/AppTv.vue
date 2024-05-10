@@ -16,6 +16,13 @@ export default {
         getPosterUrl(poster_path) {
             return new URL('https://image.tmdb.org/t/p/' + 'w342' + poster_path, import.meta.url).href;
         },
+
+
+        getVote() {
+            let voteRound = Math.ceil(this.tvObj.vote_average / 2) ; 
+            return voteRound;
+
+        },
     },
 }
 </script>
@@ -30,7 +37,8 @@ export default {
                 <img class="language" :src="getImageUrl(tvObj.original_language)" alt="" >  
                 <h4 class="text-center ms-3">{{ tvObj.original_language }}</h4>                        
             </div>
-            <h4 class="text-center">{{ tvObj.vote_average }}</h4>
+            <h4 class="text-center">{{ getVote(tvObj.vote_average) }}</h4>
+            <div class="text-center"><i class="fa-regular fa-star" v-for="n in 5"></i></div>
         </div>
     </div>
 </template>
