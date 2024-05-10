@@ -46,7 +46,7 @@ export default {
 </script>
 
 <template>
-  <AppSearch @change="getResult" />
+  <AppSearch @search="getResult" />
   <AppMain />
 </template>
 

@@ -16,8 +16,8 @@ export default {
             <h1>BOOLFLIX</h1>
         </div>
         <div class="ms_search">
-            <input type="text" v-model="store.searchQuery">
-            <button @change="$emit('filter')">CERCA</button>
+            <input type="text" aria-label="inizia la ricerca" v-model="store.searchQuery">
+            <button @click="$emit('search')">CERCA</button>
         </div>
     </div>
 </template>

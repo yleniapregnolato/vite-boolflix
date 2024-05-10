@@ -11,14 +11,19 @@ export default {
     methods: {
         getImageUrl(name) {
             return new URL('../assets/img/' + name + '.png', import.meta.url).href;
-        }
-    }
+        },
+
+        getPosterUrl(poster_path) {
+            return new URL('https://image.tmdb.org/t/p/' + 'w342' + poster_path, import.meta.url).href;
+        },
+    },
 }
 </script>
 
 <template>
     <div class="ms_tv card">
         <div class="card-body">
+            <div class="text-center"><img :src="getPosterUrl(tvObj.poster_path)" alt=""></div>
             <h2 class="text-center"> {{ tvObj.name }} </h2>
             <h3 class="text-center"> {{ tvObj.original_name }}</h3>
             <div class="text-center d-flex justify-content-center">
