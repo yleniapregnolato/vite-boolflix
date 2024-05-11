@@ -1,14 +1,13 @@
 <script>
 import { store } from "../store";
-import AppMovie from "./AppMovie.vue";
-import AppTv from "./AppTv.vue";
+import AppCard from "./AppCard.vue";
 export default {
     data() {
         return {
             store,
         };
     },
-    components: { AppMovie, AppTv }
+    components: { AppCard }
 }
 </script>
 
@@ -16,11 +15,16 @@ export default {
     <div class="container">
         <div class="row row-cols-4">
             <div class="col" v-for="movie in store.moviesArray">
-                <AppMovie :movieObj="movie" />
+                <AppCard :cardObj="movie" />
             </div>
+
             <div class="col" v-for="tv in store.tvArray">
-                <AppTv :tvObj="tv" />
+                <AppCard :cardObj="tv" />
             </div>
         </div>
     </div>
 </template>
+
+<style scoped lang="scss">
+
+</style>

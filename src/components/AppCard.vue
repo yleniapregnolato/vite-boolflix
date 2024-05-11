@@ -1,7 +1,7 @@
 <script>
 export default {
     props: {
-        tvObj: Object
+        cardObj: Object
     },
     data() {
         return {
@@ -19,24 +19,25 @@ export default {
 
 
         getVote() {
-            let voteRound = Math.ceil(this.tvObj.vote_average / 2);
+            let voteRound = Math.ceil(this.cardObj.vote_average / 2);
             return voteRound;
 
         },
-    },
+    }
 }
 </script>
 
 <template>
-    <div class="ms_tv card">
+    <div class="card">
         <div class="card-body">
-            <img v-if="tvObj.poster_path !== null" :src="getPosterUrl(tvObj.poster_path)" alt="">
+            <img v-if="cardObj.poster_path !== null" :src="getPosterUrl(cardObj.poster_path)" alt="">
             <img class="ms_not-found" v-else src="../assets/img/not-found.png" alt="not-found">
-            <h2 class="text-center"> {{ tvObj.name }} </h2>
-            <h3 class="text-center"> {{ tvObj.original_name }}</h3>
+            <h2 v-if="cardObj.title">{{ cardObj.title }}</h2>
+            <h2 class="text-center" v-else> {{ cardObj.name }} </h2>
+            <h3 class="text-center"> {{ cardObj.original_name }}</h3>
             <div class="text-center d-flex justify-content-center">
-                <img class="language" :src="getImageUrl(tvObj.original_language)" alt="">
-                <h4 class="text-center ms-3">{{ tvObj.original_language }}</h4>
+                <img class="language" :src="getImageUrl(cardObj.original_language)" alt="">
+                <h4 class="text-center ms-3">{{ cardObj.original_language }}</h4>
             </div>
             <div class="text-center"><i class="fa-regular fa-star" v-for="n in 5"></i></div>
         </div>
@@ -44,7 +45,7 @@ export default {
 </template>
 
 <style scoped lang="scss">
-.ms_tv {
+.card {
     .language {
         height: 20px;
     }
