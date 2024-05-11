@@ -28,8 +28,8 @@ export default {
 </script>
 
 <template>
-    <div class="card">
-        <div class="card-body">
+    <div class="card m-2">
+        <div class="card-body p-0">
             <div class="ms_img">
                 <img v-if="cardObj.poster_path !== null" :src="getPosterUrl(cardObj.poster_path)" alt="">
                 <img class="ms_not-found" v-else src="../assets/img/not-found.png" alt="not-found">
@@ -56,6 +56,7 @@ export default {
 
 <style scoped lang="scss">
 .card {
+    text-align: start;
     &:hover {
         .ms_info {
             display: block;
@@ -65,10 +66,13 @@ export default {
             display: none;
         }
     }
-
+    width: 100%;
+    height: 100%;
+    background-color: black;
     .ms_info {
         display: none;
-        text-align: start;
+        background-color: black;
+        color: white;
     }
 
     .language {
@@ -77,7 +81,8 @@ export default {
 
     .ms_not-found {
         max-width: 100%;
-        height: 183px;
+        height: 231px;
         object-fit: cover;
     }
+
 }</style>
