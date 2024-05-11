@@ -30,19 +30,25 @@ export default {
 <template>
     <div class="card">
         <div class="card-body">
-            <img v-if="cardObj.poster_path !== null" :src="getPosterUrl(cardObj.poster_path)" alt="">
-            <img class="ms_not-found" v-else src="../assets/img/not-found.png" alt="not-found">
-            <h2 v-if="cardObj.title">{{ cardObj.title }} hell</h2>
-            <h2 class="text-center" v-else> {{ cardObj.name }} </h2>
-            <h3 class="text-center"> {{ cardObj.original_name }}</h3>
-            <div class="text-center d-flex justify-content-center">
-                <img class="language" :src="getImageUrl(cardObj.original_language)" alt="">
-                <h4 class="text-center ms-3">{{ cardObj.original_language }}</h4>
+            <div class="ms_img">
+                <img v-if="cardObj.poster_path !== null" :src="getPosterUrl(cardObj.poster_path)" alt="">
+                <img class="ms_not-found" v-else src="../assets/img/not-found.png" alt="not-found">
             </div>
-            <div class="text-center">
-                <i class="fa-solid fa-star" v-for="n in getVote()"></i>
-                <i class="fa-regular fa-star" v-for="n in 5 - getVote()"></i>
+            <div class="ms_info">
+                <h4 v-if="cardObj.title">Titolo: {{ cardObj.title }}</h4>
+                <p class="text-center" v-else>Titolo: {{ cardObj.name }}</p>
+                <p class="text-center" v-if="cardObj.original_title">TItolo originale: {{ cardObj.original_title }}</p>
+                <p class="text-center" v-else>TItolo originale: {{ cardObj.original_name }}</p>
+                <div class="text-center d-flex justify-content-center">
+                    <img class="language" :src="getImageUrl(cardObj.original_language)" alt="">
+                    <p class="text-center ms-3">Lingua: {{ cardObj.original_language }}</p>
+                </div>
+                <div class="text-center">                  
+                    <i class="fa-solid fa-star" v-for="n in getVote()"></i>
+                    <i class="fa-regular fa-star" v-for="n in 5 - getVote()"></i>
+                </div>
             </div>
+
         </div>
 
     </div>
@@ -50,6 +56,21 @@ export default {
 
 <style scoped lang="scss">
 .card {
+    &:hover {
+        .ms_info {
+            display: block;
+        }
+
+        .ms_img {
+            display: none;
+        }
+    }
+
+    .ms_info {
+        display: none;
+        text-align: start;
+    }
+
     .language {
         height: 20px;
     }
@@ -59,5 +80,4 @@ export default {
         height: 183px;
         object-fit: cover;
     }
-}
-</style>
+}</style>
